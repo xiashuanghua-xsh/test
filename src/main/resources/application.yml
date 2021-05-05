@@ -1,0 +1,48 @@
+server:
+  context-path: /webapp
+  port: '8888'
+spring:
+  session:
+    store-type: none
+  # redis:
+    # host: 192.168.1.223
+    # port: 6379
+    # password: 
+    # database: 0
+    # pool:
+      # max-active: 800
+      # max-idle: 300
+      # max-wait: 1
+      # min-idle: 0  
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3306/springboot?useUnicode=true&characterEncoding=utf-8
+    username: root
+    password: root
+    # 使用druid数据源
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: com.mysql.jdbc.Driver
+    filters: stat
+    maxActive: 20
+    initialSize: 1
+    maxWait: 60000
+    minIdle: 1
+    timeBetweenEvictionRunsMillis: 60000
+    minEvictableIdleTimeMillis: 300000
+    validationQuery: select 'x'
+    testWhileIdle: true
+    testOnBorrow: false
+    testOnReturn: false
+    poolPreparedStatements: true
+    maxOpenPreparedStatements: 20
+  mvc:
+    view:
+      prefix: /views/
+      suffix: .jsp
+  data:
+    mongodb:
+      host: 127.0.0.1
+      port: 27017
+      database: springboot
+mybatis:
+  mapper-locations: classpath:com/webapp/domain/dao/impl/*.xml
+  type-aliases-package: com.webapp.domain.dao

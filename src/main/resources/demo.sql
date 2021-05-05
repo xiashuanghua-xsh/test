@@ -1,0 +1,1 @@
+create table t_user(id int auto_increment not null,user_name varchar(50),password varchar(50),phone varchar(11),primary key(id));
